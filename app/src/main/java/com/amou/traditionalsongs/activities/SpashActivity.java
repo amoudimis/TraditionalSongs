@@ -1,6 +1,8 @@
 package com.amou.traditionalsongs.activities;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 
 import com.amou.traditionalsongs.R;
@@ -10,10 +12,21 @@ import com.amou.traditionalsongs.R;
  */
 public class SpashActivity extends AppCompatActivity {
 
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+
+            switch (msg.what)
+            {
+
+            }
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        //adsddsa
     }
 }

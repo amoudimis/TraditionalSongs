@@ -11,51 +11,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DatabaseName = "TraDatabases";
     private static final int DatabaseVersion = 1;
 
-
+    public static String DATABASE_REGION = "region";
     public static String DATABASE_AREAS = "areas";
-    public static String DATABASE_BROCHURE_CATEGORIES = "brochureCategories";
-    public static String DATABASE_BROCHURE_PRODUCTS = "brochureProducts";
-    public static String DATABASE_DEFAULT_ITEMS = "defaultItems";
-    public static String DATABASE_OFFLINE = "offLine";
-    public static String DATABASE_EMAIL_HISTORY = "emailHistory";
+    public static String DATABASE_SONGS = "songs";
 
-    public static String EMAIL_HISTORY = "emails";
-    public static String LISTS_ID = "ID";
-    public static String LISTS_NAME = "Name";
+    public static String REGION_ID = "id";
+    public static String REGION_NAME = "name";
 
+    public static String AREAS_ID = "id";
+    public static String AREAS_REGION_ID = "region_id";
+    public static String AREAS_NAME = "name";
 
-    public static String LIST_ELEMENTS_ID = "ID";
-    public static String LIST_ELEMENTS_LIST_ID = "ListID";
-    public static String LIST_ELEMENTS_NAME = "Name";
-    public static String LIST_ELEMENTS_STATUS = "Status";
+    public static String SONGS_ID = "id";
+    public static String SONGS_AREA_ID = "area_id";
+    public static String SONGS_REGION_ID = "region_id";
+    public static String SONGS_TITLE = "title";
+    public static String SONGS_DESCRIPTION = "description";
+    public static String SONGS_LYRICS = "lyrics";
 
-
-    public static String BROCHURE_CATEGORIES_ID = "ID";
-    public static String BROCHURE_CATEGORIES_NAME = "Name";
-    public static String BROCHURE_CATEGORIES_FULLNAME = "FullName";
-    public static String BROCHURE_CATEGORIES_PHOTO_URL = "Photo";
-
-    public static String BROCHURE_PRODUCTS_ID = "ID";
-    public static String BROCHURE_PRODUCTS_CATEGORY_ID = "CategoryID";
-    public static String BROCHURE_PRODUCTS_NAME = "Name";
-    public static String BROCHURE_PRODUCTS_PRICE = "Price";
-    public static String BROCHURE_PRODUCTS_PHOTO_URL = "PhotoUrl";
-    public static String BROCHURE_PRODUCTS_UNIT_TYPE = "Type";
-    public static String BROCHURE_PRODUCTS_UNIT_TEXT = "Text";
-
-    public static String DEFAULT_ITEMS_MAIN_ID = "MainID";
-    public static String DEFAULT_ITEMS_ELEMENT_ID = "ElementID";
-    public static String DEFAULT_ITEMS_PARENT_ID = "ParentID";
-    public static String DEFAULT_ITEMS_NAME = "Name";
-    public static String DEFAULT_PHOTO_URL = "Photo";
-
-    public static String OFFLINE_ACTION = "Action";
-    public static String OFFLINE_LIST_ID = "ListID";
-    public static String OFFLINE_ELEMENT_ID = "ElementID";
 
 	
 	/*private static final String DatabaseCreate1="CREATE TABLE IF NOT EXISTS `mylist` (" +
-			"  `ID` int(11) NOT NULL ," +
+            "  `ID` int(11) NOT NULL ," +
 			"  PRIMARY KEY (`ID`)" +
 			");";*/
 	
@@ -94,6 +71,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
+
+        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS `" + DATABASE_REGION + "` (" +
+                        "%s INTEGER PRIMARY KEY ," +
+                        "%s VARCHAR(100)" +
+                        ");",
+                REGION_ID,
+                REGION_NAME));
+
+
+        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS `" + DATABASE_AREAS + "` (" +
+                        "%s INTEGER PRIMARY KEY ," +
+                        "%s INTEGER ," +
+                        "%s INTEGER ," +
+                        "%s VARCHAR(100)" +
+                        ");",
+                AREAS_ID,
+                AREAS_REGION_ID,
+                AREAS_NAME));
+
+
+        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS `" + DATABASE_SONGS + "` (" +
+                        "%s INTEGER PRIMARY KEY ," +
+                        "%s INTEGER ," +
+                        "%s INTEGER ," +
+                        "%s VARCHAR(100)," +
+                        "%s TEXT," +
+                        "%s TEXT" +
+                        ");",
+                SONGS_ID,
+                SONGS_REGION_ID,
+                SONGS_AREA_ID,
+                SONGS_TITLE,
+                SONGS_DESCRIPTION,
+                SONGS_LYRICS));
 
 //        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS `" + DATABASE_EMAIL_HISTORY + "` (%s VARCHAR(100));",
 //                EMAIL_HISTORY));
