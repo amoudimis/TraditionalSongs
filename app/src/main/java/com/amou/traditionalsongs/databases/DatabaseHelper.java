@@ -14,6 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static String DATABASE_REGIONS = "regions";
     public static String DATABASE_AREAS = "areas";
     public static String DATABASE_SONGS = "songs";
+    public static String DATABASE_LAST_MODIFIED = "LAST_MODIFIED";
 
     public static String REGIONS_ID = "id";
     public static String REGIONS_NAME = "name";
@@ -28,6 +29,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static String SONGS_TITLE = "title";
     public static String SONGS_DESCRIPTION = "description";
     public static String SONGS_LYRICS = "lyrics";
+
+    public static String LAST_MODIFIED_TABLE = "table";
+    public static String LAST_MODIFIED_DATE = "date";
 
 	/*private static final String DatabaseCreate1="CREATE TABLE IF NOT EXISTS `mylist` (" +
             "  `ID` int(11) NOT NULL ," +
@@ -104,7 +108,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 SONGS_LYRICS));
 
 
-
+//        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS `" + DATABASE_LAST_MODIFIED + "` (" +
+//                        "%s VARCHAR(100) PRIMARY KEY ," +
+//                        "%s TIMESTAMP" +
+//                        ");",
+//                LAST_MODIFIED_TABLE,
+//                LAST_MODIFIED_DATE));
 
 //        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS `" + DATABASE_EMAIL_HISTORY + "` (%s VARCHAR(100));",
 //                EMAIL_HISTORY));
