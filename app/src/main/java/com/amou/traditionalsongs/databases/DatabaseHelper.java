@@ -107,6 +107,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 SONGS_DESCRIPTION,
                 SONGS_LYRICS));
 
+        db.execSQL("INSERT INTO `traditional_regions` (`id`, `name`) VALUES\n" +
+                "(1, 'Θράκη'),\n" +
+                "(2, 'Κωνσταντινούπολη'),\n" +
+                "(3, 'Ανατολική Ρωμυλία'),\n" +
+                "(4, 'Ανατολικό Αιγαίο'),\n" +
+                "(5, 'Αρβανίτικα'),\n" +
+                "(6, 'Ήπειρος'),\n" +
+                "(7, 'Θεσσαλία'),\n" +
+                "(8, 'Καππαδοκία'),\n" +
+                "(9, 'Κρήτη'),\n" +
+                "(10, 'Κυκλάδες'),\n" +
+                "(11, 'Μακεδονία'),\n" +
+                "(12, 'Πόντος'),\n" +
+                "(13, 'Ρούμελη'),\n" +
+                "(14, 'Σαρακατσάνικα'),\n" +
+                "(15, 'Μικρά Ασία - Ιωνία');");
+
 
 //        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS `" + DATABASE_LAST_MODIFIED + "` (" +
 //                        "%s VARCHAR(100) PRIMARY KEY ," +
@@ -183,6 +200,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		return values;
 	}*/
+
+
+
+
+
 
 
 }
