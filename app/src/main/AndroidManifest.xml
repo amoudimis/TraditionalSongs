@@ -5,6 +5,7 @@
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name="com.amou.traditionalsongs.Mobile"
         android:theme="@style/AppTheme.NoActionBar">
 
         <activity

@@ -11,12 +11,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DatabaseName = "TraDatabases";
     private static final int DatabaseVersion = 1;
 
-    public static String DATABASE_REGION = "region";
+    public static String DATABASE_REGIONS = "regions";
     public static String DATABASE_AREAS = "areas";
     public static String DATABASE_SONGS = "songs";
 
-    public static String REGION_ID = "id";
-    public static String REGION_NAME = "name";
+    public static String REGIONS_ID = "id";
+    public static String REGIONS_NAME = "name";
 
     public static String AREAS_ID = "id";
     public static String AREAS_REGION_ID = "region_id";
@@ -29,8 +29,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static String SONGS_DESCRIPTION = "description";
     public static String SONGS_LYRICS = "lyrics";
 
-
-	
 	/*private static final String DatabaseCreate1="CREATE TABLE IF NOT EXISTS `mylist` (" +
             "  `ID` int(11) NOT NULL ," +
 			"  PRIMARY KEY (`ID`)" +
@@ -72,17 +70,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
 
-        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS `" + DATABASE_REGION + "` (" +
+        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS `" + DATABASE_REGIONS + "` (" +
                         "%s INTEGER PRIMARY KEY ," +
                         "%s VARCHAR(100)" +
                         ");",
-                REGION_ID,
-                REGION_NAME));
+                REGIONS_ID,
+                REGIONS_NAME));
 
 
         db.execSQL(String.format("CREATE TABLE IF NOT EXISTS `" + DATABASE_AREAS + "` (" +
                         "%s INTEGER PRIMARY KEY ," +
-                        "%s INTEGER ," +
                         "%s INTEGER ," +
                         "%s VARCHAR(100)" +
                         ");",
@@ -105,6 +102,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 SONGS_TITLE,
                 SONGS_DESCRIPTION,
                 SONGS_LYRICS));
+
+
+
 
 //        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS `" + DATABASE_EMAIL_HISTORY + "` (%s VARCHAR(100));",
 //                EMAIL_HISTORY));

@@ -12,7 +12,7 @@ import com.amou.traditionalsongs.R;
  */
 public class SpashActivity extends AppCompatActivity {
 
-    Handler handler = new Handler() {
+    static Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
 
