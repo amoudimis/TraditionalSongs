@@ -18,11 +18,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static String REGIONS_ID = "id";
     public static String REGIONS_NAME = "name";
-    public static String REGIONS_NAME_C = "name_c";
+    public static String REGIONS_NAME_W = "name_w";
 
     public static String AREAS_ID = "id";
     public static String AREAS_REGION_ID = "region_id";
     public static String AREAS_NAME = "name";
+    public static String AREAS_NAME_W = "name_w";
 
     public static String SONGS_ID = "id";
     public static String SONGS_AREA_ID = "area_id";
@@ -82,17 +83,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         ");",
                 REGIONS_ID,
                 REGIONS_NAME,
-                REGIONS_NAME_C));
+                REGIONS_NAME_W));
 
 
         db.execSQL(String.format("CREATE TABLE IF NOT EXISTS `" + DATABASE_AREAS + "` (" +
                         "%s INTEGER PRIMARY KEY ," +
-                        "%s INTEGER ," +
+                        "%s INTEGER, " +
+                        "%s VARCHAR(100), " +
                         "%s VARCHAR(100)" +
                         ");",
                 AREAS_ID,
                 AREAS_REGION_ID,
-                AREAS_NAME));
+                AREAS_NAME,
+                AREAS_NAME_W));
 
 
         db.execSQL(String.format("CREATE TABLE IF NOT EXISTS `" + DATABASE_SONGS + "` (" +

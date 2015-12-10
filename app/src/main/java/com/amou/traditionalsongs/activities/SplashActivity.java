@@ -63,6 +63,7 @@ public class SplashActivity extends Activity {
 
 
                 Mobile.getDb().insertRegions();
+                Mobile.getDb().insertAreas();
 
                 GlobalSettings.firstLaunchComplete();
 

@@ -46,7 +46,7 @@ public class DatabaseControl {
 
     public void insertRegions() {
 
-        database.execSQL("INSERT INTO `" + DatabaseHelper.DATABASE_REGIONS + "` (`id`, `name`, `name_c`) VALUES\n" +
+        database.execSQL("INSERT INTO `" + DatabaseHelper.DATABASE_REGIONS + "` (`"+DatabaseHelper.REGIONS_ID+"`, `"+DatabaseHelper.REGIONS_NAME+"`, `"+DatabaseHelper.REGIONS_NAME_W+"`) VALUES\n" +
                 "(1, 'Θράκη', 'Θρακη'),\n" +
                 "(2, 'Κωνσταντινούπολη','Κωνσταντινουπολη'),\n" +
                 "(3, 'Ανατολική Ρωμυλία', 'Ανατολικη Ρωμυλια'),\n" +
@@ -66,10 +66,18 @@ public class DatabaseControl {
 
     }
 
+
+    public void insertAreas()
+    {
+        database.execSQL("INSERT INTO `"+ DatabaseHelper.DATABASE_AREAS +"` (`id`, `region_id`, `name`, `name_w`) VALUES" +
+                "(1, 11, 'Άσσηρος', 'Ασσηρος');");
+
+    }
+
     public ArrayList<RegionPojo> getRegions() {
         ArrayList<RegionPojo> items = new ArrayList<>();
 
-        Cursor cursor = database.query(DatabaseHelper.DATABASE_REGIONS, null, null, null, null, null, DatabaseHelper.REGIONS_NAME_C + " ASC");
+        Cursor cursor = database.query(DatabaseHelper.DATABASE_REGIONS, null, null, null, null, null, DatabaseHelper.REGIONS_NAME_W + " ASC");
 
         int index_id = cursor.getColumnIndex(DatabaseHelper.REGIONS_ID);
         int index_name = cursor.getColumnIndex(DatabaseHelper.REGIONS_NAME);
