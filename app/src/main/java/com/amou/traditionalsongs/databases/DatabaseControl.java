@@ -46,22 +46,22 @@ public class DatabaseControl {
 
     public void insertRegions() {
 
-        database.execSQL("INSERT INTO `" + DatabaseHelper.DATABASE_REGIONS + "` (`id`, `name`) VALUES\n" +
-                "(1, 'Θράκη'),\n" +
-                "(2, 'Κωνσταντινούπολη'),\n" +
-                "(3, 'Ανατολική Ρωμυλία'),\n" +
-                "(4, 'Ανατολικό Αιγαίο'),\n" +
-                "(5, 'Αρβανίτικα'),\n" +
-                "(6, 'Ήπειρος'),\n" +
-                "(7, 'Θεσσαλία'),\n" +
-                "(8, 'Καππαδοκία'),\n" +
-                "(9, 'Κρήτη'),\n" +
-                "(10, 'Κυκλάδες'),\n" +
-                "(11, 'Μακεδονία'),\n" +
-                "(12, 'Πόντος'),\n" +
-                "(13, 'Ρούμελη'),\n" +
-                "(14, 'Σαρακατσάνικα'),\n" +
-                "(15, 'Μικρά Ασία - Ιωνία');");
+        database.execSQL("INSERT INTO `" + DatabaseHelper.DATABASE_REGIONS + "` (`id`, `name`, `name_c`) VALUES\n" +
+                "(1, 'Θράκη', 'Θρακη'),\n" +
+                "(2, 'Κωνσταντινούπολη','Κωνσταντινουπολη'),\n" +
+                "(3, 'Ανατολική Ρωμυλία', 'Ανατολικη Ρωμυλια'),\n" +
+                "(4, 'Ανατολικό Αιγαίο', 'Ανατολικο Αιγαιο'),\n" +
+                "(5, 'Αρβανίτικα', 'Αρβανιτικα'),\n" +
+                "(6, 'Ήπειρος', 'Ηπειρος'),\n" +
+                "(7, 'Θεσσαλία', 'Θεσσαλια'),\n" +
+                "(8, 'Καππαδοκία', 'Καππαδοκια'),\n" +
+                "(9, 'Κρήτη', 'Κρητη'),\n" +
+                "(10, 'Κυκλάδες', 'Κυκλαδες'),\n" +
+                "(11, 'Μακεδονία', 'Μακεδονια'),\n" +
+                "(12, 'Πόντος', 'Ποντος'),\n" +
+                "(13, 'Ρούμελη', 'Ρουμελη'),\n" +
+                "(14, 'Σαρακατσάνικα', 'Σαρακατσανικα'),\n" +
+                "(15, 'Μικρά Ασία - Ιωνία', 'Μικρα Ασια - Ιωνια');");
 
 
     }
@@ -69,7 +69,7 @@ public class DatabaseControl {
     public ArrayList<RegionPojo> getRegions() {
         ArrayList<RegionPojo> items = new ArrayList<>();
 
-        Cursor cursor = database.query(DatabaseHelper.DATABASE_REGIONS, null, null, null, null, null, DatabaseHelper.REGIONS_NAME + " ASC");
+        Cursor cursor = database.query(DatabaseHelper.DATABASE_REGIONS, null, null, null, null, null, DatabaseHelper.REGIONS_NAME_C + " ASC");
 
         int index_id = cursor.getColumnIndex(DatabaseHelper.REGIONS_ID);
         int index_name = cursor.getColumnIndex(DatabaseHelper.REGIONS_NAME);
