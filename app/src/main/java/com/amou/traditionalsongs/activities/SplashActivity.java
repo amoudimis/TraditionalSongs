@@ -1,20 +1,20 @@
 package com.amou.traditionalsongs.activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
 
+import com.amou.traditionalsongs.Mobile;
 import com.amou.traditionalsongs.R;
 import com.amou.traditionalsongs.utilities.GlobalSettings;
 
 /**
  * Created by dimitrios on 4/12/2015.
  */
-public class SpashActivity extends Activity {
+public class SplashActivity extends Activity {
 
     private ProgressDialog progressDialog;
 
@@ -23,6 +23,8 @@ public class SpashActivity extends Activity {
         public void handleMessage(Message msg) {
 
             progressDialog.dismiss();
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            finish();
 
         }
     };
@@ -59,7 +61,12 @@ public class SpashActivity extends Activity {
                     }
                 });
 
-                handler.sendEmptyMessageDelayed(0,2000);
+
+                Mobile.getDb().insertRegions();
+
+                GlobalSettings.firstLaunchComplete();
+
+                handler.sendEmptyMessageDelayed(0, 2000);
             }
             else
             {

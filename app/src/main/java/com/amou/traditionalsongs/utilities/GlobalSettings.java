@@ -51,7 +51,7 @@ public class GlobalSettings {
     public static void setFirstLaunchValue(boolean value)
     {
         Editor editor = getSharedPreferences().edit();
-        editor.putBoolean("auto_login", value);
+        editor.putBoolean("first_launch", value);
         editor.commit();
     }
 

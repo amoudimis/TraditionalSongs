@@ -1,8 +1,15 @@
 package com.amou.traditionalsongs.databases;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.util.Log;
+
+import com.amou.traditionalsongs.pojos.RegionPojo;
+
+import java.util.ArrayList;
 
 public class DatabaseControl {
 
@@ -36,6 +43,55 @@ public class DatabaseControl {
         dbHelper.close();
     }
 
+
+    public void insertRegions() {
+
+        database.execSQL("INSERT INTO `" + DatabaseHelper.DATABASE_REGIONS + "` (`id`, `name`) VALUES\n" +
+                "(1, 'Θράκη'),\n" +
+                "(2, 'Κωνσταντινούπολη'),\n" +
+                "(3, 'Ανατολική Ρωμυλία'),\n" +
+                "(4, 'Ανατολικό Αιγαίο'),\n" +
+                "(5, 'Αρβανίτικα'),\n" +
+                "(6, 'Ήπειρος'),\n" +
+                "(7, 'Θεσσαλία'),\n" +
+                "(8, 'Καππαδοκία'),\n" +
+                "(9, 'Κρήτη'),\n" +
+                "(10, 'Κυκλάδες'),\n" +
+                "(11, 'Μακεδονία'),\n" +
+                "(12, 'Πόντος'),\n" +
+                "(13, 'Ρούμελη'),\n" +
+                "(14, 'Σαρακατσάνικα'),\n" +
+                "(15, 'Μικρά Ασία - Ιωνία');");
+
+
+    }
+
+    public ArrayList<RegionPojo> getRegions() {
+        ArrayList<RegionPojo> items = new ArrayList<>();
+
+        Cursor cursor = database.query(DatabaseHelper.DATABASE_REGIONS, null, null, null, null, null, DatabaseHelper.REGIONS_NAME + " ASC");
+
+        int index_id = cursor.getColumnIndex(DatabaseHelper.REGIONS_ID);
+        int index_name = cursor.getColumnIndex(DatabaseHelper.REGIONS_NAME);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            RegionPojo region = new RegionPojo(cursor.getInt(index_id), cursor.getString(index_name));
+
+            items.add(region);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return items;
+    }
+
+
+    public void count() {
+        Cursor mCount = database.rawQuery("SELECT * FROM `"
+                + DatabaseHelper.DATABASE_REGIONS + "`", null);
+
+        Log.e("test", "test " + mCount.getCount());
+    }
 //	public long insertBrochureCategories(ArrayList<BrochureCategoryPojo> list) {
 //		open();
 //		long succed=0;

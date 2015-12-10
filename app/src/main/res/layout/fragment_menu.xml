@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appColor_light"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/appColor"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="ΣΥΛΛΟΓΟΣ ΓΗΓΕΝΩΝ ΜΑΚΕΔΟΝΩΝ ΘΕΡΜΗΣ"
+            android:textColor="@color/letterColor"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:src="@mipmap/logo3" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Ο ΜΕΓΑΣ ΑΛΕΞΑΝΔΡΟΣ"
+            android:textColor="@color/letterColor"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0px"
+        android:scrollbarThumbVertical="@drawable/region_scrollbar"
+        android:listSelector="@android:color/transparent"></ListView>
+
+</LinearLayout>

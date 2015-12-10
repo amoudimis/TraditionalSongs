@@ -5,32 +5,39 @@
     android:layout_height="fill_parent"
     android:background="@color/appColor">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
+    <!--<LinearLayout-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:orientation="vertical">-->
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:gravity="center"
-            android:text="ΣΥΛΛΟΓΟΣ ΓΗΓΕΝΩΝ ΜΑΚΕΔΟΝΩΝ ΘΕΡΜΗΣ"
-            android:textColor="@color/letterColor"
-            android:textSize="26sp" />
+        <!--<TextView-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:gravity="center"-->
+            <!--android:text="ΣΥΛΛΟΓΟΣ ΓΗΓΕΝΩΝ ΜΑΚΕΔΟΝΩΝ ΘΕΡΜΗΣ"-->
+            <!--android:textColor="@color/letterColor"-->
+            <!--android:textSize="26sp" />-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:gravity="center"
-            android:text="Ο ΜΕΓΑΣ ΑΛΕΞΑΝΔΡΟΣ"
-            android:textColor="@color/letterColor"
-            android:textSize="28sp" />
-    </LinearLayout>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:gravity="center"-->
+            <!--android:text="Ο ΜΕΓΑΣ ΑΛΕΞΑΝΔΡΟΣ"-->
+            <!--android:textColor="@color/letterColor"-->
+            <!--android:textSize="28sp" />-->
+    <!--</LinearLayout>-->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:src="@mipmap/logo2"
+        android:layout_centerInParent="true"/>
 
 
     <TextView

@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="appColor">#21005c</color>
+    <color name="appColor_light">#30008a</color>
+
     <color name="letterColor">#C0B21B</color>
 </resources>
