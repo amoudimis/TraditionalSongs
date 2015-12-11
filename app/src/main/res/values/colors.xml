@@ -7,4 +7,5 @@
     <color name="appColor_light">#30008a</color>
 
     <color name="letterColor">#C0B21B</color>
+    <color name="background_contact_pressed">#66acacac</color>
 </resources>

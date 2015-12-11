@@ -12,73 +12,70 @@
         android:background="#fff">
 
 
-        <LinearLayout
-            android:id="@+id/bottomForm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical">
+        <!--<LinearLayout-->
+        <!--android:id="@+id/bottomForm"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:orientation="vertical">-->
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginRight="1dp"
-                android:background="@color/appColor" />
-
-
-
-            <TextView
-                android:layout_marginTop="7dp"
-                style="@style/textSizeHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/contact"
-                android:textColor="#000"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:background="@drawable/devider" />
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:layout_marginLeft="1dp"-->
+        <!--android:layout_marginRight="1dp"-->
+        <!--android:background="@color/appColor" />-->
 
 
-           <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="7dp"
-               android:orientation="horizontal"
-               android:layout_gravity="center_horizontal">
-               <TextView
-                   style="@style/textSizeNormal"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:text="@string/phone"
-                   android:textColor="#000" />
+        <!--<TextView-->
+        <!--android:layout_marginTop="7dp"-->
+        <!--style="@style/textSizeHeader"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:text="@string/contact"-->
+        <!--android:textColor="#000"-->
+        <!--android:textStyle="bold" />-->
 
-               <TextView
-                   android:layout_marginLeft="4dp"
-                   style="@style/textSizeNormal"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:text="2310 487-621"
-                   android:textColor="#000" />
-           </LinearLayout>
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:layout_marginLeft="25dp"-->
+        <!--android:layout_marginRight="25dp"-->
+        <!--android:background="@drawable/devider" />-->
 
 
+        <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="7dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_gravity="center_horizontal">-->
+        <!--<TextView-->
+        <!--style="@style/textSizeNormal"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:text="@string/phone"-->
+        <!--android:textColor="#000" />-->
 
-        </LinearLayout>
+        <!--<TextView-->
+        <!--android:layout_marginLeft="4dp"-->
+        <!--style="@style/textSizeNormal"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:text="2310 487-621"-->
+        <!--android:textColor="#000" />-->
+        <!--</LinearLayout>-->
+
+
+        <!--</LinearLayout>-->
 
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/bottomForm">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -88,11 +85,185 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:orientation="vertical">
+
+                    <TextView
+                        style="@style/textSizeHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="Επικοινωνία"
+                        android:textColor="#ababab"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:background="#ababab" />
+
+                    <LinearLayout
+                        android:id="@+id/buttonSite"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_contact"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            style="@style/textSizeNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="makedonesthermis.blogspot.gr"
+                            android:textColor="#000000"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/textSizeNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Πολιτιστικό Κέντρο Θέρμης\nΔημητρίου - Καραολή &amp; Καπ.Χάψα, 57001, Θέρμη"
+                        android:textColor="#000000" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#ababab" />
+
+                    <LinearLayout
+                        android:id="@+id/buttonPhone"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_contact"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:minHeight="40dp"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="5dp"
+                            android:src="@mipmap/phone" />
+
+                        <TextView
+                            style="@style/textSizeNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="2310 487-621"
+                            android:textColor="#000000" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/buttonEmail1"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_contact"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:minHeight="40dp"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="5dp"
+                            android:src="@mipmap/email" />
+
+                        <TextView
+                            style="@style/textSizeNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="makedonesthermis@gmail.com"
+                            android:textColor="#000000" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/buttonEmail2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_contact"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:minHeight="40dp"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="5dp"
+                            android:src="@mipmap/email" />
+
+                        <TextView
+                            style="@style/textSizeNormal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="gigeneismakedonesthermis@yahoo.gr"
+                            android:textColor="#000000" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#ababab" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="0.33"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/buttonFacebook"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/button_facebook"
+                                android:clickable="true" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="0.33"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/buttonYoutube"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/button_youtube"
+                                android:clickable="true" />
+                        </LinearLayout>
+                    </LinearLayout>
 
 
                 </LinearLayout>
-
             </LinearLayout>
         </ScrollView>
 
