@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
+import com.amou.traditionalsongs.pojos.AreasPojo;
 import com.amou.traditionalsongs.pojos.RegionPojo;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class DatabaseControl {
 
     public void insertRegions() {
 
-        database.execSQL("INSERT INTO `" + DatabaseHelper.DATABASE_REGIONS + "` (`"+DatabaseHelper.REGIONS_ID+"`, `"+DatabaseHelper.REGIONS_NAME+"`, `"+DatabaseHelper.REGIONS_NAME_W+"`) VALUES\n" +
+        database.execSQL("INSERT INTO `" + DatabaseHelper.DATABASE_REGIONS + "` (`" + DatabaseHelper.REGIONS_ID + "`, `" + DatabaseHelper.REGIONS_NAME + "`, `" + DatabaseHelper.REGIONS_NAME_W + "`) VALUES\n" +
                 "(1, 'Θράκη', 'Θρακη'),\n" +
                 "(2, 'Κωνσταντινούπολη','Κωνσταντινουπολη'),\n" +
                 "(3, 'Ανατολική Ρωμυλία', 'Ανατολικη Ρωμυλια'),\n" +
@@ -70,7 +71,11 @@ public class DatabaseControl {
     public void insertAreas()
     {
         database.execSQL("INSERT INTO `"+ DatabaseHelper.DATABASE_AREAS +"` (`id`, `region_id`, `name`, `name_w`) VALUES" +
-                "(1, 11, 'Άσσηρος', 'Ασσηρος');");
+                "(1, 11, 'Άσσηρος', 'Ασσηρος')," +
+                "(2, 11, 'Πυλαία', 'Πυλαια'),"+
+                "(3, 11, 'Σοχός', 'Σοχος'),"+
+                "(4, 11, 'Νεοχωρούδα', 'Νεοχωρουδα'),"+
+                "(5, 11, 'Δρυμός', 'Δρυμoς');");
 
     }
 
@@ -93,13 +98,25 @@ public class DatabaseControl {
         return items;
     }
 
+    public ArrayList<AreasPojo> getAreas(int regionId) {
+        ArrayList<AreasPojo> items = new ArrayList<>();
 
-    public void count() {
-        Cursor mCount = database.rawQuery("SELECT * FROM `"
-                + DatabaseHelper.DATABASE_REGIONS + "`", null);
+        Cursor cursor = database.query(DatabaseHelper.DATABASE_AREAS, null, DatabaseHelper.AREAS_REGION_ID + " = ?", new String[]{String.valueOf(regionId)}, null, null, DatabaseHelper.AREAS_NAME_W + " ASC");
 
-        Log.e("test", "test " + mCount.getCount());
+        int index_id = cursor.getColumnIndex(DatabaseHelper.AREAS_ID);
+        int index_name = cursor.getColumnIndex(DatabaseHelper.AREAS_NAME);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            AreasPojo region = new AreasPojo(cursor.getInt(index_id), regionId, cursor.getString(index_name));
+
+            items.add(region);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return items;
     }
+
 //	public long insertBrochureCategories(ArrayList<BrochureCategoryPojo> list) {
 //		open();
 //		long succed=0;

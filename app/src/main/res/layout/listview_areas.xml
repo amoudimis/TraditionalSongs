@@ -7,25 +7,27 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_region"
+        android:background="@drawable/button_area"
         android:minHeight="65dp">
 
 
         <TextView
-            android:id="@+id/textViewRegionName"
+            android:id="@+id/textViewAreaName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:padding="10dp"
-            android:textColor="#fff"
-            style="@style/textSizeNormal"/>
+            android:textColor="#000"
+            style="@style/textSizeNormal" />
 
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_alignParentBottom="true"
-            android:background="@color/letterColor" />
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/appColor" />
     </RelativeLayout>
 
 </LinearLayout>

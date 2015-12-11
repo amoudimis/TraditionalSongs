@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">ΤraditionalSongs</string>
+    <string name="app_name">Όλα για την παράδοση</string>
     <string name="home">Αρχική</string>
+    <string name="areas_empty">Δεν υπάρχουν διαθέσιμες περιοχές.</string>
+    <string name="contact">Επικοινωνία</string>
+    <string name="phone">Τηλ.:</string>
 </resources>

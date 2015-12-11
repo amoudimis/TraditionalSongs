@@ -8,7 +8,94 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
+        android:layout_marginBottom="100dp"
         android:background="#fff">
+
+
+        <LinearLayout
+            android:id="@+id/bottomForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@color/appColor" />
+
+
+
+            <TextView
+                android:layout_marginTop="7dp"
+                style="@style/textSizeHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/contact"
+                android:textColor="#000"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/devider" />
+
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="7dp"
+               android:orientation="horizontal"
+               android:layout_gravity="center_horizontal">
+               <TextView
+                   style="@style/textSizeNormal"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:text="@string/phone"
+                   android:textColor="#000" />
+
+               <TextView
+                   android:layout_marginLeft="4dp"
+                   style="@style/textSizeNormal"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_horizontal"
+                   android:text="2310 487-621"
+                   android:textColor="#000" />
+           </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottomForm">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
 
     </RelativeLayout>
 </LinearLayout>

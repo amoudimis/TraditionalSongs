@@ -15,6 +15,7 @@ import com.amou.traditionalsongs.Mobile;
 import com.amou.traditionalsongs.R;
 import com.amou.traditionalsongs.activities.MainActivity;
 import com.amou.traditionalsongs.adapters.RegionAdapter;
+import com.amou.traditionalsongs.enums.FragmentTypes;
 import com.amou.traditionalsongs.pojos.RegionPojo;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class MenuFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.e("", "" + position);
-                activity.setRegion(adapter.getItem(position));
+                activity.setRegion(FragmentTypes.AREAS,adapter.getItem(position));
             }
         });
 

@@ -17,4 +17,11 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="textSizeNormal">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="textSizeHeader">
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>

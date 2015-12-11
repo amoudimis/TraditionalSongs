@@ -19,4 +19,10 @@ public class HomeFragment  extends BaseFragment{
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        pActivity.setTitleText(getString(R.string.home));
+
+    }
 }

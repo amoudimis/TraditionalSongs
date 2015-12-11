@@ -1,5 +1,6 @@
 package com.amou.traditionalsongs.enums;
 
+import com.amou.traditionalsongs.fragments.AreasFragment;
 import com.amou.traditionalsongs.fragments.BaseFragment;
 import com.amou.traditionalsongs.fragments.HomeFragment;
 import com.amou.traditionalsongs.fragments.RegionsFragment;
@@ -10,7 +11,8 @@ import com.amou.traditionalsongs.fragments.RegionsFragment;
 public enum FragmentTypes {
 
     HOME (1),
-    REGIONS (2);
+    REGIONS (2),
+    AREAS (3);
 
     private int id;
     FragmentTypes(int id) {
@@ -26,6 +28,8 @@ public enum FragmentTypes {
                 return new HomeFragment();
             case 2:
                 return new RegionsFragment();
+            case 3:
+                return new AreasFragment();
         }
 
         return null;

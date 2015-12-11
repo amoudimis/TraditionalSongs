@@ -11,14 +11,52 @@
         android:layout_height="match_parent"
         android:background="@color/appColor_light">
 
+
+        <RelativeLayout
+            android:id="@+id/buttonDrawer"
+            android:layout_width="55dp"
+            android:layout_centerVertical="true"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_drawer"
+            android:clickable="true">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/drawer_icon" />
+
+        </RelativeLayout>
+
+
         <TextView
+            android:layout_marginLeft="57dp"
+            android:layout_marginRight="57dp"
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/home"
             android:textColor="@color/letterColor"
-            android:textSize="24sp" />
+            android:textSize="22sp" />
+
+
+        <RelativeLayout
+            android:layout_alignParentRight="true"
+            android:id="@+id/buttonHome"
+            android:layout_width="55dp"
+            android:layout_centerVertical="true"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_drawer"
+            android:clickable="true">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/logo3" />
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 
