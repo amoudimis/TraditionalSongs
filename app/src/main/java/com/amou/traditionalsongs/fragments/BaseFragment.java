@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.amou.traditionalsongs.activities.MainActivity;
@@ -11,17 +12,17 @@ import com.amou.traditionalsongs.activities.MainActivity;
 /**
  * Created by dimitrios on 10/12/2015.
  */
-public class BaseFragment extends Fragment{
+public class BaseFragment<T extends AppCompatActivity> extends Fragment{
 
 
-    protected MainActivity pActivity;
+    protected T pActivity;
     protected View progressBar;
     protected ProgressDialog progressDialog;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        pActivity = (MainActivity) getActivity();
+        pActivity = (T) getActivity();
         progressDialog = new ProgressDialog(getActivity());
 
     }

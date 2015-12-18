@@ -6,5 +6,8 @@ package com.amou.traditionalsongs.utilities;
 public enum Keys {
 
     REGION_PARAM,
-    AREAS_PARAM
+    AREA_PARAM,
+    SONG_PARAM;
+
+
 }

@@ -9,6 +9,12 @@ import android.util.Log;
 
 import com.amou.traditionalsongs.pojos.AreasPojo;
 import com.amou.traditionalsongs.pojos.RegionPojo;
+import com.amou.traditionalsongs.pojos.SongDetailsPojo;
+import com.amou.traditionalsongs.pojos.SongPojo;
+import com.amou.traditionalsongs.values.AreaValues;
+import com.amou.traditionalsongs.values.RegionValues;
+import com.amou.traditionalsongs.values.SongValues;
+import com.amou.traditionalsongs.values.WordValues;
 
 import java.util.ArrayList;
 
@@ -44,39 +50,24 @@ public class DatabaseControl {
         dbHelper.close();
     }
 
-
     public void insertRegions() {
-
-        database.execSQL("INSERT INTO `" + DatabaseHelper.DATABASE_REGIONS + "` (`" + DatabaseHelper.REGIONS_ID + "`, `" + DatabaseHelper.REGIONS_NAME + "`, `" + DatabaseHelper.REGIONS_NAME_W + "`) VALUES\n" +
-                "(1, 'Θράκη', 'Θρακη'),\n" +
-                "(2, 'Κωνσταντινούπολη','Κωνσταντινουπολη'),\n" +
-                "(3, 'Ανατολική Ρωμυλία', 'Ανατολικη Ρωμυλια'),\n" +
-                "(4, 'Ανατολικό Αιγαίο', 'Ανατολικο Αιγαιο'),\n" +
-                "(5, 'Αρβανίτικα', 'Αρβανιτικα'),\n" +
-                "(6, 'Ήπειρος', 'Ηπειρος'),\n" +
-                "(7, 'Θεσσαλία', 'Θεσσαλια'),\n" +
-                "(8, 'Καππαδοκία', 'Καππαδοκια'),\n" +
-                "(9, 'Κρήτη', 'Κρητη'),\n" +
-                "(10, 'Κυκλάδες', 'Κυκλαδες'),\n" +
-                "(11, 'Μακεδονία', 'Μακεδονια'),\n" +
-                "(12, 'Πόντος', 'Ποντος'),\n" +
-                "(13, 'Ρούμελη', 'Ρουμελη'),\n" +
-                "(14, 'Σαρακατσάνικα', 'Σαρακατσανικα'),\n" +
-                "(15, 'Μικρά Ασία - Ιωνία', 'Μικρα Ασια - Ιωνια');");
-
-
+        database.execSQL(RegionValues.getRegions());
     }
 
+    public void insertAreas() {
+        database.execSQL(AreaValues.getAreas());
+    }
 
-    public void insertAreas()
-    {
-        database.execSQL("INSERT INTO `"+ DatabaseHelper.DATABASE_AREAS +"` (`id`, `region_id`, `name`, `name_w`) VALUES" +
-                "(1, 11, 'Άσσηρος', 'Ασσηρος')," +
-                "(2, 11, 'Πυλαία', 'Πυλαια'),"+
-                "(3, 11, 'Σοχός', 'Σοχος'),"+
-                "(4, 11, 'Νεοχωρούδα', 'Νεοχωρουδα'),"+
-                "(5, 11, 'Δρυμός', 'Δρυμoς');");
+    public void insertSongs() {
+        database.execSQL(SongValues.getSongs());
+    }
 
+    public void insertWords() {
+        database.execSQL(WordValues.getWords());
+    }
+
+    private boolean enymToBoolean(String value) {
+        return (value.equalsIgnoreCase("Y") ? true : false);
     }
 
     public ArrayList<RegionPojo> getRegions() {
@@ -84,12 +75,12 @@ public class DatabaseControl {
 
         Cursor cursor = database.query(DatabaseHelper.DATABASE_REGIONS, null, null, null, null, null, DatabaseHelper.REGIONS_NAME_W + " ASC");
 
-        int index_id = cursor.getColumnIndex(DatabaseHelper.REGIONS_ID);
-        int index_name = cursor.getColumnIndex(DatabaseHelper.REGIONS_NAME);
+        int indexId = cursor.getColumnIndex(DatabaseHelper.REGIONS_ID);
+        int indexName = cursor.getColumnIndex(DatabaseHelper.REGIONS_NAME);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            RegionPojo region = new RegionPojo(cursor.getInt(index_id), cursor.getString(index_name));
+            RegionPojo region = new RegionPojo(cursor.getInt(indexId), cursor.getString(indexName));
 
             items.add(region);
             cursor.moveToNext();
@@ -103,12 +94,12 @@ public class DatabaseControl {
 
         Cursor cursor = database.query(DatabaseHelper.DATABASE_AREAS, null, DatabaseHelper.AREAS_REGION_ID + " = ?", new String[]{String.valueOf(regionId)}, null, null, DatabaseHelper.AREAS_NAME_W + " ASC");
 
-        int index_id = cursor.getColumnIndex(DatabaseHelper.AREAS_ID);
-        int index_name = cursor.getColumnIndex(DatabaseHelper.AREAS_NAME);
+        int indexId = cursor.getColumnIndex(DatabaseHelper.AREAS_ID);
+        int indexName = cursor.getColumnIndex(DatabaseHelper.AREAS_NAME);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            AreasPojo region = new AreasPojo(cursor.getInt(index_id), regionId, cursor.getString(index_name));
+            AreasPojo region = new AreasPojo(cursor.getInt(indexId), regionId, cursor.getString(indexName));
 
             items.add(region);
             cursor.moveToNext();
@@ -117,6 +108,38 @@ public class DatabaseControl {
         return items;
     }
 
+    public ArrayList<SongPojo> getListOfSongsFromArea(int areaId) {
+        ArrayList<SongPojo> items = new ArrayList<>();
+
+        Cursor cursor = database.query(DatabaseHelper.DATABASE_SONGS, new String[]{DatabaseHelper.SONGS_ID, DatabaseHelper.SONGS_TITLE, DatabaseHelper.SONGS_HAS_DANCE, DatabaseHelper.SONGS_HAS_LYRICS}, DatabaseHelper.SONGS_AREA_ID + " = ?", new String[]{String.valueOf(areaId)}, null, null, DatabaseHelper.SONGS_TITLE + " ASC");
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            SongPojo song = new SongPojo();
+            song.setId(cursor.getInt(0));
+            song.setTitle(cursor.getString(1));
+            song.setHasDance(enymToBoolean(cursor.getString(2)));
+            song.setHasLyrics(enymToBoolean(cursor.getString(3)));
+
+            items.add(song);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return items;
+    }
+
+
+    public SongDetailsPojo geSongById(int songId) {
+
+        Cursor cursor = database.query(DatabaseHelper.DATABASE_SONGS, null, DatabaseHelper.SONGS_ID + " = ?", new String[]{String.valueOf(songId)}, null, null, null);
+
+        cursor.moveToFirst();
+        SongDetailsPojo song = new SongDetailsPojo();
+        song.setLyrics(cursor.getString(cursor.getColumnIndex(DatabaseHelper.SONGS_LYRICS)));
+        cursor.close();
+
+        return song;
+    }
 //	public long insertBrochureCategories(ArrayList<BrochureCategoryPojo> list) {
 //		open();
 //		long succed=0;

@@ -9,11 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.amou.traditionalsongs.R;
+import com.amou.traditionalsongs.activities.MainActivity;
 
 /**
  * Created by dimitrios on 10/12/2015.
  */
-public class HomeFragment  extends BaseFragment{
+public class HomeFragment  extends BaseFragment<MainActivity>{
 
 
     private View buttonPhone, buttonEmail1, buttonEmail2, buttonSite, buttonFacebook, buttonYoutube;
@@ -105,7 +106,7 @@ public class HomeFragment  extends BaseFragment{
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse("http://makedonesthermis.blogspot.gr"));
+                i.setData(Uri.parse("https://www.youtube.com/channel/UCxFowalO8qhf-wXjrB86VsA"));
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getApplicationContext().startActivity(i);
             }

@@ -8,8 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
         android:background="@drawable/button_home"
+        android:clickable="true"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -35,12 +35,27 @@
             android:textSize="18sp" />
 
 
-
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/letterColor"/>
+        android:background="@color/letterColor" />
+
+    <TextView
+        android:id="@+id/textViewRegion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/letterColor"
+        android:textStyle="bold"
+         android:padding="5dp"
+        android:textSize="26sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/letterColor" />
 
     <ListView
         android:id="@+id/listView"
@@ -49,7 +64,7 @@
         android:cacheColorHint="@android:color/transparent"
         android:divider="@android:color/transparent"
         android:dividerHeight="0px"
-        android:scrollbarThumbVertical="@drawable/region_scrollbar"
-        android:listSelector="@android:color/transparent"></ListView>
+        android:listSelector="@android:color/transparent"
+        android:scrollbarThumbVertical="@drawable/region_scrollbar"></ListView>
 
 </LinearLayout>

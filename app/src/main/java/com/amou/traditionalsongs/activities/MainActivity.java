@@ -22,9 +22,9 @@ import com.amou.traditionalsongs.utilities.Keys;
 public class MainActivity extends AppCompatActivity {
 
     private MenuFragment menu;
-    private BaseFragment current_fragment = null;
+    private BaseFragment currentFragment = null;
     private TextView textViewTitle = null;
-    private RegionPojo selected_region = null;
+    private RegionPojo selectedRegion = null;
     private DrawerLayout mDrawerLayout = null;
     private FrameLayout menuView = null;
     private View buttonDrawer, buttonHome;
@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         textViewTitle = (TextView) toolbar.findViewById(R.id.textViewTitle);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        menuView = (FrameLayout) findViewById(R.id.frame_menu);
+
         buttonDrawer = toolbar.findViewById(R.id.buttonDrawer);
         buttonDrawer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        menuView = (FrameLayout) findViewById(R.id.frame_menu);
+
 
         createMenu();
 
@@ -72,16 +75,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void switchFragment(FragmentTypes type) {
-        current_fragment = type.getFragment();
+        currentFragment = type.getFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.frame_container, current_fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.frame_container, currentFragment).commit();
     }
 
     public void switchFragment(FragmentTypes type,Bundle data) {
-        current_fragment = type.getFragment();
-        current_fragment.setArguments(data);
+        currentFragment = type.getFragment();
+        currentFragment.setArguments(data);
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.frame_container, current_fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.frame_container, currentFragment).commit();
     }
 
     public void setTitleText(String text)
@@ -92,8 +95,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void setRegion(FragmentTypes type,RegionPojo region)
     {
-        selected_region = region;
-        setTitleText(selected_region.getName());
+        selectedRegion = region;
+        setTitleText(selectedRegion.getName());
         Bundle params = new Bundle();
         params.putSerializable(Keys.REGION_PARAM.toString(),region);
         switchFragment(type,params);

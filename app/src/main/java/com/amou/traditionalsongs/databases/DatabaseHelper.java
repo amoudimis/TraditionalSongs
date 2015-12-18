@@ -14,6 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static String DATABASE_REGIONS = "regions";
     public static String DATABASE_AREAS = "areas";
     public static String DATABASE_SONGS = "songs";
+    public static String DATABASE_WORDS = "words";
     public static String DATABASE_LAST_MODIFIED = "LAST_MODIFIED";
 
     public static String REGIONS_ID = "id";
@@ -31,6 +32,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static String SONGS_TITLE = "title";
     public static String SONGS_DESCRIPTION = "description";
     public static String SONGS_LYRICS = "lyrics";
+    public static String SONGS_HAS_LYRICS = "has_lyrics";
+    public static String SONGS_HAS_DANCE = "has_dance";
+
+    public static String WORDS_ID = "id";
+    public static String WORDS_SONG_ID = "song_id";
+    public static String WORDS_WORD = "word";
+    public static String WORDS_DESCRIPTION = "description";
+    public static String WORDS_WIKI = "wiki";
 
     public static String LAST_MODIFIED_TABLE = "table";
     public static String LAST_MODIFIED_DATE = "date";
@@ -104,14 +113,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "%s INTEGER ," +
                         "%s VARCHAR(100)," +
                         "%s TEXT," +
-                        "%s TEXT" +
+                        "%s TEXT," +
+                        "%s VARCHAR(1)," +
+                        "%s VARCHAR(1)" +
                         ");",
                 SONGS_ID,
                 SONGS_REGION_ID,
                 SONGS_AREA_ID,
                 SONGS_TITLE,
                 SONGS_DESCRIPTION,
-                SONGS_LYRICS));
+                SONGS_LYRICS,
+                SONGS_HAS_LYRICS,
+                SONGS_HAS_DANCE));
+
+
+        db.execSQL(String.format("CREATE TABLE IF NOT EXISTS `" + DATABASE_WORDS + "` (" +
+                        "%s INTEGER PRIMARY KEY ," +
+                        "%s INTEGER, " +
+                        "%s VARCHAR(100), " +
+                        "%s TEXT," +
+                        "%s VARCHAR(150) " +
+                        ");",
+                WORDS_ID,
+                WORDS_SONG_ID,
+                WORDS_WORD,
+                WORDS_DESCRIPTION,
+                WORDS_WIKI));
 
 //        db.execSQL("INSERT INTO `traditional_regions` (`id`, `name`) VALUES\n" +
 //                "(1, 'Θράκη'),\n" +

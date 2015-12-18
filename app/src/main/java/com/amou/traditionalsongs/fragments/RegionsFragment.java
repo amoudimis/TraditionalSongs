@@ -7,11 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.amou.traditionalsongs.R;
+import com.amou.traditionalsongs.activities.MainActivity;
 
 /**
  * Created by dimitrios on 10/12/2015.
  */
-public class RegionsFragment  extends BaseFragment{
+public class RegionsFragment  extends BaseFragment<MainActivity>{
 
     @Nullable
     @Override

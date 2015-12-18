@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.amou.traditionalsongs.Mobile;
 import com.amou.traditionalsongs.R;
 import com.amou.traditionalsongs.activities.MainActivity;
+import com.amou.traditionalsongs.activities.SongsActivity;
 import com.amou.traditionalsongs.adapters.AreaAdapter;
 import com.amou.traditionalsongs.fragments.BaseFragment;
 import com.amou.traditionalsongs.pojos.AreasPojo;
@@ -26,14 +27,17 @@ import java.util.ArrayList;
 /**
  * Created by dimitrios on 10/12/2015.
  */
-public class AreasFragment extends BaseFragment {
+public class AreasFragment extends BaseFragment<MainActivity> {
 
+    //Views
     private ListView listView;
     private View progressBar;
     private View textViewEmpty;
-    private RegionPojo selectedRegion = null;
+
+    //Objects
     private ArrayList<AreasPojo> items = null;
     private AreaAdapter adapter = null;
+    private RegionPojo selectedRegion = null;
 
 
     @Nullable
@@ -58,7 +62,12 @@ public class AreasFragment extends BaseFragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), SongsActivity.class);
+                intent.putExtra(Keys.REGION_PARAM.toString(), selectedRegion);
+                intent.putExtra(Keys.AREA_PARAM.toString(), adapter.getItem(position));
 
+                getActivity().startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_left_in, R.anim.slide_left_out);
             }
         });
 
@@ -72,13 +81,9 @@ public class AreasFragment extends BaseFragment {
             @Override
             public void run() {
                 items = Mobile.getDb().getAreas(region.getId());
-
-
                 if (items.size() == 0) {
                     noAreas();
-                }
-                else
-                {
+                } else {
                     adapter = new AreaAdapter(getApplicationContext(), items);
                     setAdapter();
                 }
@@ -98,8 +103,7 @@ public class AreasFragment extends BaseFragment {
         });
     }
 
-    private void setAdapter()
-    {
+    private void setAdapter() {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {

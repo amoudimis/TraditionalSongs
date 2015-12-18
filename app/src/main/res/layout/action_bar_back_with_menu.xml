@@ -1,0 +1,64 @@
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/actionBar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    app:contentInsetEnd="0dp"
+    app:contentInsetStart="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/appColor_light">
+
+
+        <RelativeLayout
+            android:id="@+id/buttonBack"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@drawable/button_drawer"
+            android:clickable="true">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_action_back" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="57dp"
+            android:layout_marginRight="57dp"
+            android:textColor="@color/letterColor"
+            android:textSize="22sp" />
+
+
+        <RelativeLayout
+            android:id="@+id/buttonDrawer"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/button_drawer"
+            android:clickable="true">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/drawer_icon" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.Toolbar>

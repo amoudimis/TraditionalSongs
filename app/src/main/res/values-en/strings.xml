@@ -3,4 +3,8 @@
     <string name="home">Home</string>
     <string name="contact">Contact</string>
     <string name="phone">Phone:</string>
+    <string name="areas_empty">There are not available areas.</string>
+    <string name="songs">Songs</string>
+    <string name="app_name">Traditional</string>
+    <string name="songs_empty">There are not available songs.</string>
 </resources>
