@@ -8,6 +8,7 @@ import android.text.method.LinkMovementMethod;
 import android.text.method.MovementMethod;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.amou.traditionalsongs.Mobile;
 import com.amou.traditionalsongs.R;
@@ -17,7 +18,10 @@ import com.amou.traditionalsongs.pojos.RegionPojo;
 import com.amou.traditionalsongs.pojos.SongDetailsPojo;
 import com.amou.traditionalsongs.pojos.SongPojo;
 import com.amou.traditionalsongs.utilities.Keys;
+import com.amou.traditionalsongs.values.WordPojo;
 import com.amou.traditionalsongs.views.LinkEnabledTextView;
+
+import java.util.ArrayList;
 
 /**
  * Created by dimitrios on 18/12/2015.
@@ -26,6 +30,7 @@ public class SongDetailActivity extends AppCompatActivity{
 
     //Views
     private LinkEnabledTextView textViewLink;
+    private TextView textViewTitle;
     private View buttonBack;
 
     //Object
@@ -39,6 +44,9 @@ public class SongDetailActivity extends AppCompatActivity{
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.actionBar);
         setSupportActionBar(toolbar);
+
+        textViewTitle = (TextView) toolbar.findViewById(R.id.textViewTitle);
+        textViewTitle.setText(getString(R.string.songs));
 
         buttonBack = toolbar.findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -60,13 +68,21 @@ public class SongDetailActivity extends AppCompatActivity{
         }
 
         SongDetailsPojo pojo = Mobile.getDb().geSongById(song.getId());
+        Log.e("test","song.getId() "+song.getId());
+        ArrayList<WordPojo> words = Mobile.getDb().getSpecialWordFromSongId(song.getId());
+        textViewLink.setLinkedWord(words);
+
+        Log.e("test","size: "+words.size());
+
         textViewLink.gatherLinksForText(pojo.getLyrics());
 
         textViewLink.setOnTextLinkClickListener(new TextLinkClickListener() {
             @Override
-            public void onTextLinkClick(View view, String clickedString) {
-                Log.e("patithike re", "clickedString");
+            public void onTextLinkClick(View view, WordPojo word) {
+                Log.e("patithike re", "clickedString"+word.getId());
+                Log.e("patithike re", "clickedString"+word.getWord());
             }
+
         });
 
 

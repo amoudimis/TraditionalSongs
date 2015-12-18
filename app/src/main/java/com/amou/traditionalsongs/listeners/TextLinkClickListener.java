@@ -2,6 +2,8 @@ package com.amou.traditionalsongs.listeners;
 
 import android.view.View;
 
+import com.amou.traditionalsongs.values.WordPojo;
+
 /**
  * Created by dimitrios on 18/12/2015.
  */
@@ -12,7 +14,7 @@ public interface TextLinkClickListener {
      *LinkEnabledTextView
      *
      * @param view
-     * @param clickedString
+     * @param word
      */
-    public void onTextLinkClick(View view, String clickedString);
+    public void onTextLinkClick(View view, WordPojo word);
 }

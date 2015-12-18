@@ -14,6 +14,7 @@ import com.amou.traditionalsongs.pojos.SongPojo;
 import com.amou.traditionalsongs.values.AreaValues;
 import com.amou.traditionalsongs.values.RegionValues;
 import com.amou.traditionalsongs.values.SongValues;
+import com.amou.traditionalsongs.values.WordPojo;
 import com.amou.traditionalsongs.values.WordValues;
 
 import java.util.ArrayList;
@@ -139,6 +140,25 @@ public class DatabaseControl {
         cursor.close();
 
         return song;
+    }
+
+    public ArrayList<WordPojo> getSpecialWordFromSongId(int songId) {
+
+        ArrayList<WordPojo> items = new ArrayList<>();
+
+        Cursor cursor = database.query(DatabaseHelper.DATABASE_WORDS, null, DatabaseHelper.WORDS_SONG_ID + " = ?", new String[]{String.valueOf(songId)}, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            WordPojo word = new WordPojo();
+            word.setId(cursor.getInt(0));
+            word.setWord(cursor.getString(2));
+
+            items.add(word);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return items;
     }
 //	public long insertBrochureCategories(ArrayList<BrochureCategoryPojo> list) {
 //		open();

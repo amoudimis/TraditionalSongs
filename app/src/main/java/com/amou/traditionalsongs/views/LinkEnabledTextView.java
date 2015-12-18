@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.amou.traditionalsongs.listeners.TextLinkClickListener;
+import com.amou.traditionalsongs.values.WordPojo;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -25,17 +26,19 @@ public class LinkEnabledTextView extends TextView {
 
     // A Listener Class for generally sending the Clicks to the one which
     // requires it
-    TextLinkClickListener mListener;
+    private TextLinkClickListener mListener;
+
+    private ArrayList<WordPojo> words;
 
     // Pattern for gathering @usernames from the Text
-    Pattern screenNamePattern = Pattern.compile("(@[a-zA-Z0-9_]+)");
+//    Pattern screenNamePattern = Pattern.compile("(@[a-zA-Z0-9_]+)");
 
     // Pattern for gathering #hasttags from the Text
-    Pattern hashTagsPattern = Pattern.compile("ζαμπάκι");
+//    Pattern hashTagsPattern = Pattern.compile("ζαμπάκι");
 
     // Pattern for gathering http:// links from the Text
-    Pattern hyperLinksPattern = Pattern
-            .compile("([Hh][tT][tT][pP][sS]?:\\/\\/[^ ,'\'>\\]\\)]*[^\\. ,'\'>\\]\\)])");
+//    Pattern hyperLinksPattern = Pattern
+//            .compile("([Hh][tT][tT][pP][sS]?:\\/\\/[^ ,'\'>\\]\\)]*[^\\. ,'\'>\\]\\)])");
 
     private SpannableString linkableText;
 
@@ -44,15 +47,24 @@ public class LinkEnabledTextView extends TextView {
         listOfLinks = new ArrayList<Hyperlink>();
     }
 
+    public void setLinkedWord(ArrayList<WordPojo> words)
+    {
+        this.words = words;
+    }
+
     public void gatherLinksForText(String text) {
         linkableText = new SpannableString(text);
         // gatherLinks basically collects the Links depending upon the Pattern
         // that we supply
         // and add the links to the ArrayList of the links
 
-        gatherLinks(listOfLinks, linkableText, screenNamePattern);
-        gatherLinks(listOfLinks, linkableText, hashTagsPattern);
-        gatherLinks(listOfLinks, linkableText, hyperLinksPattern);
+        for (WordPojo word : words)
+        {
+            gatherLinks(listOfLinks, linkableText, word);
+        }
+
+//        gatherLinks(listOfLinks, linkableText, hashTagsPattern);
+//        gatherLinks(listOfLinks, linkableText, hyperLinksPattern);
 
         for (int i = 0; i < listOfLinks.size(); i++) {
             Hyperlink linkSpec = listOfLinks.get(i);
@@ -80,8 +92,9 @@ public class LinkEnabledTextView extends TextView {
     // listOfLinks array list
 
     private final void gatherLinks(ArrayList<Hyperlink> links, Spannable s,
-                                   Pattern pattern) {
+                                   WordPojo word) {
         // Matcher matching the pattern
+        Pattern pattern = Pattern.compile(word.getWord());
         Matcher m = pattern.matcher(s);
 
         while (m.find()) {
@@ -95,7 +108,7 @@ public class LinkEnabledTextView extends TextView {
             Hyperlink spec = new Hyperlink();
 
             spec.textSpan = s.subSequence(start, end);
-            spec.span = new InternalURLSpan(spec.textSpan.toString());
+            spec.span = new InternalURLSpan(spec.textSpan.toString(), word);
             spec.start = start;
             spec.end = end;
 
@@ -108,14 +121,20 @@ public class LinkEnabledTextView extends TextView {
 
     public class InternalURLSpan extends ClickableSpan {
         private String clickedSpan;
+        private WordPojo word;
 
         public InternalURLSpan(String clickedString) {
             clickedSpan = clickedString;
         }
 
+        public InternalURLSpan(String clickedString, WordPojo word) {
+            clickedSpan = clickedString;
+            this.word = word;
+        }
+
         @Override
         public void onClick(View textView) {
-            mListener.onTextLinkClick(textView, clickedSpan);
+            mListener.onTextLinkClick(textView, word);
         }
     }
 
@@ -124,6 +143,7 @@ public class LinkEnabledTextView extends TextView {
     class Hyperlink {
         CharSequence textSpan;
         InternalURLSpan span;
+        WordPojo word;
         int start;
         int end;
     }
